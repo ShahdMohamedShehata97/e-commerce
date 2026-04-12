@@ -1,0 +1,66 @@
+import { getUserWishList } from '@/api/services/route.services'
+import React from 'react'
+import { FaShoppingCart, FaTrashAlt } from 'react-icons/fa'
+
+export default async function page() {
+
+    const wishlist= await getUserWishList()
+   console.log('wisssssh',wishlist)
+
+  return (
+    <>
+    <div className="w-full max-w-6xl mx-auto p-4">
+      {/* Table Header */}
+      <div className="grid grid-cols-12 bg-gray-50 border border-gray-100 rounded-t-xl py-4 px-6 text-sm font-medium text-slate-500 mb-1">
+        <div className="col-span-6">Product</div>
+        <div className="col-span-2 text-center">Price</div>
+        <div className="col-span-2 text-center">Status</div>
+        <div className="col-span-2 text-center">Actions</div>
+      </div>
+
+      {/* Product Row */}
+      {wishlist?.map((item)=><div key={item.id} className="grid grid-cols-12 items-center bg-white border border-gray-100  px-6 py-4 shadow-sm">
+        
+        {/* Product Info */}
+        <div className="col-span-6 flex items-center gap-4">
+          <div className="w-16 h-16 bg-gray-50 border border-gray-100 rounded-lg flex items-center justify-center p-2">
+            <img 
+              src={item.imageCover} 
+              alt="Shoes" 
+              className="object-contain"
+            />
+          </div>
+          <div className="flex flex-col">
+            <h3 className="text-[15px] font-bold text-slate-700">{item.title.split(' ',6).join(' ')}</h3>
+            <span className="text-xs text-slate-400 mt-1">{item.category.name}</span>
+          </div>
+        </div>
+
+        {/* Price */}
+        <div className="col-span-2 text-center">
+          <span className="text-[15px] font-bold text-slate-800">{item.price} EGP</span>
+        </div>
+
+        {/* Status */}
+        <div className="col-span-2 flex justify-center">
+          <div className="flex items-center gap-1.5 bg-emerald-50 text-emerald-500 px-3 py-1 rounded-full text-[11px] font-semibold border border-emerald-100">
+            <span className="w-1.5 h-1.5 bg-emerald-500 rounded-full"></span>
+            In Stock
+          </div>
+        </div>
+
+        {/* Actions */}
+        <div className="col-span-2 flex items-center justify-center gap-2">
+          <button className="flex items-center gap-2 bg-[#10b981] hover:bg-[#059669] text-white px-4 py-2 rounded-lg text-sm font-medium transition-colors">
+            <FaShoppingCart className="text-xs" />
+            Add to Cart
+          </button>
+          <button className="p-2.5 border border-gray-200 rounded-lg text-slate-400 hover:text-red-500 hover:bg-red-50 transition-all">
+            <FaTrashAlt size={16} />
+          </button>
+        </div>
+
+      </div>)}
+    </div></>
+  )
+}
