@@ -51,7 +51,7 @@ export default async function AllCartegories  ()  {
          {categories?.map((brand)=><div key={brand._id} className='shadow px-5 pt-5 pb-7 border border=[#F9FAFB] rounded-[12px]'>
 
             <div className=' '>
-              <img src={brand.image} alt={brand.name}  className='w-[231px]!  h-[231px] object-cover'/>
+              <img src={brand.image} alt={brand.name}  className='w-57.75!  h-57.75 object-cover'/>
             </div>
 
             {/* <h3 className='text-[14px] font-semibold'>{brand.name}</h3> */}

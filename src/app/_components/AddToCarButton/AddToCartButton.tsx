@@ -53,15 +53,17 @@
 import { CartContextType, useCart } from "@/app/_context/CartContext";
 import { addProductToCart } from "@/app/cart/cart.actions";
 // import { revalidateTag } from "next/cache";
-import { MouseEvent, useTransition } from "react";
+import { MouseEvent, ReactNode, useTransition } from "react";
 import { toast } from "sonner";
 
 interface AddToCartBuutinProps{
-    className:string
-    id:string
+    className:string,
+    id:string,
+    name:string
+    icon:ReactNode
 }
 
-export default function AddToCartButton({id,className}:AddToCartBuutinProps) {
+export default function AddToCartButton({id,className ,name,icon}:AddToCartBuutinProps) {
 
   const [isPending, startTransition] = useTransition()
 
@@ -83,22 +85,28 @@ export default function AddToCartButton({id,className}:AddToCartBuutinProps) {
 
 
       } else {
-        toast.error('Adding product failed')
+        toast.error('Adding product failed',{position:'top-right',duration:3000})
       }
     })
   }
 
   return (
-    <button
-      onClick={handleAddToCartButtom}
-      disabled={isPending}
-      className="bg-[#16A34A] w-10 h-10 rounded-full text-white text-2xl font-semibold flex items-center justify-center disabled:opacity-50"
-    >
-      {isPending ? (
-        <div className="w-5 h-5 border-2 border-white border-t-transparent rounded-full animate-spin"></div>
-      ) : (
-        "+"
-      )}
-    </button>
+   <button
+  onClick={handleAddToCartButtom}
+  disabled={isPending}
+  className={
+    className ||
+    "bg-[#16A34A] w-10 h-10 rounded-full text-white text-2xl font-semibold flex items-center justify-center disabled:opacity-50"
+  }
+>
+  {isPending ? (
+    <div className="w-5 h-5 border-2 border-white border-t-transparent rounded-full animate-spin" />
+  ) : (
+    <div className="flex items-center gap-2">
+      {icon}
+      <span>{name || "+"}</span>
+    </div>
+  )}
+</button>
   )
 }

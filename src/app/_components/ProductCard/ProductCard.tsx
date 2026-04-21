@@ -40,7 +40,7 @@ export default function ProductCard({ product }: ProductCardProps) {
         <FaRegHeart />
       </div> */}
 
-      < AddwishList id={product.id}/>
+      < AddwishList id={product.id} name='' className='' icon={<></>}/>
 
       <div className="w-8 h-8 shadow rounded-full hover:text-[#16A34A] bg-white font-bold  text-[#4A5565] flex justify-center items-center absolute  top-14 right-2 ">
         <TfiReload className="stroke-0.8" size={18} />
@@ -77,14 +77,14 @@ export default function ProductCard({ product }: ProductCardProps) {
                 </p>
               </div>
 
-              <AddToCartButton id={product.id} className=''/>
+              <AddToCartButton icon={<></>} id={product.id} className='' name=""/>
             </div>
           </div>
         ) : (
           <div className="flex justify-between mt-3 items-center">
             <p className="text-[18px] font-bold ">{product.price} EGP </p>
 
-          <AddToCartButton id={product.id} className=''/>
+          <AddToCartButton id={product.id}  icon={<></>}   className='' name=''/>
           </div>
         )}
       </div>

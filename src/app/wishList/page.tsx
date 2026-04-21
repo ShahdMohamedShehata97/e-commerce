@@ -1,11 +1,15 @@
 import { getUserWishList } from '@/api/services/route.services'
 import React from 'react'
 import { FaShoppingCart, FaTrashAlt } from 'react-icons/fa'
+import RemoveFromWishListButton from './RemoveFromWishListButton'
+import AddToCartButton from '../_components/AddToCarButton/AddToCartButton'
 
 export default async function page() {
 
     const wishlist= await getUserWishList()
    console.log('wisssssh',wishlist)
+
+  //  const {updateNumberOfWishListItems} = (useWishList() as WishListType)
 
   return (
     <>
@@ -51,13 +55,20 @@ export default async function page() {
 
         {/* Actions */}
         <div className="col-span-2 flex items-center justify-center gap-2">
-          <button className="flex items-center gap-2 bg-[#10b981] hover:bg-[#059669] text-white px-4 py-2 rounded-lg text-sm font-medium transition-colors">
+          {/* <button className="flex items-center gap-2 bg-[#16A34A] text-white px-4 py-2 rounded-lg text-sm font-medium transition-colors">
             <FaShoppingCart className="text-xs" />
             Add to Cart
-          </button>
-          <button className="p-2.5 border border-gray-200 rounded-lg text-slate-400 hover:text-red-500 hover:bg-red-50 transition-all">
+          </button> */}
+
+
+           <AddToCartButton name={'Add to Cart'} icon={<FaShoppingCart />} id={item.id} className='flex items-center gap-2 bg-[#16A34A] text-white px-4 py-2 rounded-lg text-sm font-medium transition-colors'/>
+
+
+          {/* <button className="p-2.5 border border-gray-200 rounded-lg text-slate-400 hover:text-red-500 hover:bg-red-50 transition-all">
             <FaTrashAlt size={16} />
-          </button>
+          </button> */}
+
+          <RemoveFromWishListButton id={item.id}/>
         </div>
 
       </div>)}

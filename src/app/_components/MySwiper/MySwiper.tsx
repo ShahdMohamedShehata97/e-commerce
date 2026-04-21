@@ -67,7 +67,7 @@ export default function MySwiper() {
     <Link href='/products' className="w-35.5 h-11 rounded-[8px] px-6 py-2 border bg-white text-[16px] text-[#00C950] font-semibold flex items-center justify-center mt-4">
       Shop Now
     </Link>
-    <Link href='/products' className="w-35.5 h-11 rounded-[8px] px-6 py-2 bg-transparent text-[16px] text-white font-semibold flex items-center justify-center mt-4 border">
+    <Link href='/myOrders' className="w-35.5 h-11 rounded-[8px] px-6 py-2 bg-transparent text-[16px] text-white font-semibold flex items-center justify-center mt-4 border">
       View Details
     </Link>
   </div>

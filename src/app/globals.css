@@ -158,3 +158,18 @@
 /* .data-active\:text-foreground:where([data-state="active"]), .data-active\:text-foreground:where([data-active]:not([data-active="false"])) {
     color:'#16A34A';
 } */
+
+.swiper-button-prev, .swiper-button-next{
+  color:'#0DAB48' !important;
+  width: 30px;
+  hight:30px;
+  background-color: white;
+  padding:8px;
+  border-radius: 100%;
+}
+
+@media (min-width: 40rem) {
+    .sm\:max-w-sm {
+        max-width: 35%;
+    }
+}

@@ -97,10 +97,10 @@ export default async function cart() {
                 </div >
 
                 <div className='mt-4 flex gap-1.5 bg-[#E5E7EB] p-1.5  rounded-[12px] w-30.5 justify-around'>
-                  <UpdateProductCountButton id={item.product.id} newCount={item.count - 1}/>
+                  <UpdateProductCountButton id={item.product.id} newCount={item.count - 1} className=''/>
                   <p className='text-[16px] font-bold '>{item.count}</p>
                   {/* <button  className ='bg-[#16A34A] text-white px-2 font-bold rounded-[5px]'>+</button> */}
-                  <UpdateProductCountButton isIncrement id={item.product.id} newCount={item.count + 1} />
+                  <UpdateProductCountButton isIncrement id={item.product.id} newCount={item.count + 1}  className=''/>
                 </div>
               </div>
 
@@ -186,8 +186,8 @@ export default async function cart() {
             <div className='mt-5 '>
               <Button className='text-[16px] text-[#4A5565] font-medium  cursor-pointer py-2! bg-transparent w-full border border-gray-500 border-dashed'>
                 <FaTag />Apply Promo Code</Button>
-              <button className='text-[16px] flex items-center gap-2 justify-center text-white font-medium  cursor-pointer mt-5  bg-linear-to-r from-[#16A34A] to-[#15803D] py-2 rounded-[12px] w-full '>
-                <FaLock />Secure Checkout</button>
+              <Link href={'/completeOrder'} className='text-[16px] flex items-center gap-2 justify-center text-white font-medium  cursor-pointer mt-5  bg-linear-to-r from-[#16A34A] to-[#15803D] py-2 rounded-[12px] w-full '>
+                <FaLock />Secure Checkout</Link>
             </div>
 
             <div className='mt-5 flex mx-auto gap-2 justify-center'>
@@ -197,8 +197,8 @@ export default async function cart() {
               </div>
               <div className='w-px h-4 bg-gray-500'></div>
 
-              < FaTruck color='#00C950' />
-                <p className='text-[12px] font-medium text-[#6A7282] '>Secure Payment</p>
+              < FaTruck color='#2B7FFF' />
+                <p className='text-[12px] font-medium text-[#6A7282] '>Fast Delivery</p>
               </div>
 
               <Link href={'/'} className='mt-7 flex justify-center  text-[14px] font-medium text-[#16A34A] '>← Continue Shopping</Link>

@@ -13,6 +13,7 @@ import { CiHeart, CiShare2 } from 'react-icons/ci';
 import { TabsDemo } from '@/app/_components/NavTabs/NavTabs';
 import ProductCarousel from '@/app/_components/ProductDetailsCarusol/ProductDetailsCarsol';
 import ProductImages from '../ImageCaresoul';
+import AddwishList from '@/app/_components/AddToWishList/AddwishList';
 
 export default async function ProductDetails({params}:{params:Promise<{id:string}>}) {
 
@@ -96,7 +97,9 @@ if (productDetails?.category?._id) {
             <p className='font-bold text-[#16A34A]'>149.00 EGP</p>
           </div>
           <div className='flex w-full gap-2 mt-4'>
-            <button className='bg-[#16A34A] text-[16px] font-medium text-white w-1/2 py-2 rounded-[12px] flex items-center justify-center gap-2 '> <FaShoppingCart />Add to Cart</button>
+            {/* <button className='bg-[#16A34A] text-[16px] font-medium text-white w-1/2 py-2 rounded-[12px] flex items-center justify-center gap-2 '> <FaShoppingCart />Add to Cart</button> */}
+
+            <AddToCartButton name={'Add to Cart'} icon={<FaShoppingCart />} id={productDetails.id} className='bg-[#16A34A] text-[16px] font-medium text-white w-1/2 py-2 rounded-[12px] flex items-center justify-center gap-2'/>
             <button className='bg-black text-[16px] font-medium text-white w-1/2 py-2 rounded-[12px] flex items-center justify-center gap-2 '> <BsFillLightningChargeFill />Buy Now</button>
           
             
@@ -105,7 +108,10 @@ if (productDetails?.category?._id) {
 
           <div className='flex w-full gap-2 mt-4'>
 
-          <button className='bg-transparent border text-[16px] font-medium text-[#364153] w-[90%] py-2 rounded-[12px] flex items-center justify-center gap-2  '> <CiHeart size={30} /> Add to Wishlist</button>
+          {/* <button className='bg-transparent border text-[16px] font-medium text-[#364153] w-[90%] py-2 rounded-[12px] flex items-center justify-center gap-2  '> <CiHeart size={30} /> Add to Wishlist</button> */}
+
+<AddwishList id={productDetails.id} name='Add to Wishlist'  className='bg-transparent border text-[16px] font-medium text-[#364153] w-[90%] py-2 rounded-[12px] flex items-center justify-center gap-2 ' icon={<CiHeart size={30} />}/>
+
           <button className='bg-transparent border  text-[16px] font-medium text-[#364153] w-[10%]  py-2 rounded-[12px] flex items-center justify-center gap-2 '> <CiShare2 size={20} /></button>
           
 

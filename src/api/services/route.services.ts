@@ -1,5 +1,5 @@
 import { decodeAuthenticatedUserToken } from "@/app/utils"
-import { BrandType, CartResponse, CategoryType, OrderType, ProductType } from "../types"
+import { AddressType, BrandType, CartResponse, CategoryType, OrderType, ProductType } from "../types"
 // import { type } from './../../app/(Auth)/register/registerObjectType';
 import { id } from "zod/v4/locales";
 
@@ -105,7 +105,7 @@ export   async function getAllProducts() : Promise<ProductType[] | undefined>{
   }
 
 
-  export   async function getLogetInUserAddres() {
+  export   async function getLogedInUserAddres():Promise<AddressType[] | undefined> {
 
     const userToken= await decodeAuthenticatedUserToken()
 
@@ -114,7 +114,7 @@ export   async function getAllProducts() : Promise<ProductType[] | undefined>{
     if(userToken){
          try {
        const resp= await  fetch(`https://ecommerce.routemisr.com/api/v1/addresses`,
-        {headers:{token:userToken},
+        {headers:{token:userToken},cache:'no-store',next:{revalidate:0}
         // cache:'force-cache',
         // next:{tags:['getUserCart']}
     
@@ -124,7 +124,7 @@ export   async function getAllProducts() : Promise<ProductType[] | undefined>{
    const finalRes=await resp.json()
 
    console.log('finalRes of user Address',finalRes.data)
-//   return finalRes.data
+  return finalRes.data
     
    } catch (error) {
     console.log('error',error)

@@ -20,7 +20,7 @@ export default async function AllProducts  ()  {
         <nav className="text-white/80 text-sm mb-4 flex items-center gap-2">
           <span className="hover:underline cursor-pointer">Home</span>
           <span>/</span>
-          <span className="font-medium text-white">Brands</span>
+          <span className="font-medium text-white">Products</span>
         </nav>
 
         {/* Content Section */}

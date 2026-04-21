@@ -4,7 +4,7 @@ import React from 'react'
 import { updateProductCount } from './cart.actions'
 import { toast } from 'sonner'
 
-export default function UpdateProductCountButton({isIncrement=false,id,newCount }:{isIncrement?:boolean,id:string,newCount:number}) {
+export default function UpdateProductCountButton({isIncrement=false,id,newCount,className }:{className:string,isIncrement?:boolean,id:string,newCount:number}) {
     
 
    async function handleUpdateCount(){

@@ -16,7 +16,7 @@ export default function HandleHeaderRendering() {
     <>
 
        {isAuthenticated ? <div className="flex gap-4">
-      <Link href="/login" className="flex items-center gap-1 text-[13px] sm:text-[14px] font-medium text-[#6A7282] hover:text-[#16A34A]">
+      <Link href="/profile/MyAddress" className="flex items-center gap-1 text-[13px] sm:text-[14px] font-medium text-[#6A7282] hover:text-[#16A34A]">
         <FiUser  size={16} />
      {userName}
       </Link>

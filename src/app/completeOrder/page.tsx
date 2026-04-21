@@ -3,11 +3,12 @@ import { Home, Bookmark, MapPin, Phone, Building2, Plus, Info } from 'lucide-rea
 import { IoMdHome } from "react-icons/io";
 import { MdLocationOn, MdOutlineLock } from 'react-icons/md';
 import { FaCartShopping, FaCity, FaTruck } from 'react-icons/fa6';
-import { getLogetInUserAddres, getUserCart } from '@/api/services/route.services';
+import {  getLogedInUserAddres, getUserCart } from '@/api/services/route.services';
 import PaymentWay from '../_components/PayMentWay/PaymentWay';
 import { FaShieldAlt, FaShoppingBag } from 'react-icons/fa';
 import { FiRefreshCcw } from 'react-icons/fi';
 import Link from 'next/link';
+import AddressSelector from './UserAddress';
 
 export default async function CompleteOrder ()  {
 
@@ -17,11 +18,11 @@ export default async function CompleteOrder ()  {
 
 
  
-    const userAddress= await getLogetInUserAddres()
+    const userAddress= await getLogedInUserAddres()
 
     const orderSumery= await getUserCart()  
 
-    console.log('user Address',userAddress)
+    // console.log('user Address',userAddress)
 
   return (
   <div className='w-full px-4 xl:w-[80%] lg:w-[90%] mx-auto py-10'>
@@ -63,26 +64,32 @@ export default async function CompleteOrder ()  {
               <span className="text-gray-800">Saved Addresses</span>
             </div>
             
-           
-            <div className="relative border border-gray-200 rounded-xl p-4 flex items-start gap-4 bg-white hover:border-gray-300 transition-all cursor-pointer">
+
+            <AddressSelector addresses={userAddress}/>
+
+            {/* {userAddress?.map((address)=>
+               <div className="relative border border-gray-200 rounded-xl p-4 flex items-start gap-4 bg-white hover:border-gray-300 transition-all cursor-pointer">
               <div className="w-10 h-10 bg-[#F3F4F6] shrink-0 flex items-center justify-center rounded-[8px]">
                 <MdLocationOn color='#6A7282' size={24} />
               </div>
               <div className="flex-1">
-                <h3 className="font-bold text-gray-800 leading-none mb-1">Sadat City</h3>
-                <p className="text-gray-500 text-sm">Sadat City, Egypt</p>
+                <h3 className="font-bold text-gray-800 leading-none mb-1">{address.name}</h3>
+                <p className="text-gray-500 text-sm">{address.details}</p>
                 <div className="flex items-center gap-6 mt-4 text-xs text-gray-400">
                   <div className="flex items-center gap-1.5">
                     <Phone size={14} />
-                    <span>01097514862</span>
+                    <span>{address.phone}</span>
                   </div>
                   <div className="flex items-center gap-1.5">
                     <Building2 size={14} />
-                    <span>Sadat City</span>
+                    <span>{address.city}</span>
                   </div>
                 </div>
               </div>
             </div>
+            )} */}
+           
+           
 
            
             <button className="w-full border-2 border-dashed border-[#2ecc71] rounded-xl p-4 flex items-center gap-4 bg-[#f1fcf5] hover:bg-[#e8f9ee] transition-colors group">
@@ -134,7 +141,9 @@ export default async function CompleteOrder ()  {
 
       
       <div className="mt-6">
-        <PaymentWay />
+        {/* <PaymentWay /> */}
+
+        <PaymentWay/>
       </div>
     </div>
 
@@ -211,4 +220,8 @@ export default async function CompleteOrder ()  {
 </div>
   );
 };
+
+// function getLogetInUserAddres() {
+//   throw new Error('Function not implemented.');
+// }
 

@@ -104,3 +104,40 @@ export async function addTowishList(id:string){
 
     
 }
+
+ 
+
+export async function removeFromWishList(id:string){
+
+
+
+   const userToken= await decodeAuthenticatedUserToken()
+    if(userToken){
+      
+      try{
+        
+      const res = await fetch(`https://ecommerce.routemisr.com/api/v1/wishlist/${id}`,{
+        method:'delete',
+        headers:{token:userToken}
+      }) 
+
+      if(res.ok){
+        const finalRes = await res.json()
+
+        console.log('delete from wish list', finalRes)
+        return finalRes.data.length
+      }
+
+      else{
+        return null
+      }
+
+      }
+      catch(error){
+        console.log(error)
+      }
+    }
+
+
+
+}

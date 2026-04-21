@@ -6,13 +6,10 @@ import { deleteElementFromCart } from './cart.actions'
 import { CartContextType, useCart } from '../_context/CartContext'
 import { toast } from 'sonner'
 
-
-
-
 export default function RemoveProductFromCart({id}:{id:string}) {
 
     const {updateNumberOfCartItems}= (useCart() as CartContextType)
-   
+  
 
  async function handleRemoveElement(){
 
@@ -24,6 +21,7 @@ export default function RemoveProductFromCart({id}:{id:string}) {
 
     toast.success('Item removed Successfully',{position:'top-right',duration:3000})
     updateNumberOfCartItems(res)
+    
 
    }
 
