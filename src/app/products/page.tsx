@@ -13,7 +13,7 @@ export default async function AllProducts  ()  {
 
   return (
    <div className='bg-[#F9FAFB80]'>
-     <div className="w-full bg-linear-to-r from-[#16A34A] via-[#22C55E] to-[#4ADE80] py-12 px-6 md:px-16 min-h-[200px] flex flex-col justify-center">
+     <div className="w-full bg-linear-to-r from-[#16A34A] via-[#22C55E] to-[#4ADE80] py-12 px-6 md:px-16 min-h-50 flex flex-col justify-center">
       <div className="max-w-7xl mx-auto w-full">
         
         {/* Breadcrumbs */}

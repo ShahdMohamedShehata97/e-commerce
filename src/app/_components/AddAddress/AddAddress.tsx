@@ -358,9 +358,7 @@ export function AddAddress() {
  
   const router = useRouter()
   async function mySubmit(data: addressObjectType) {
-    // try {
-    //   console.log("SUBMIT 🔥", data)
-
+   
       const res = await addAddress(data)
     
 

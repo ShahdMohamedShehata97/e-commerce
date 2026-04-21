@@ -153,19 +153,19 @@ const shippingPrice = Number(allOrders?.[0]?.shippingPrice ?? 0)
               </div>
               <div className="flex justify-between text-sm">
                 <span className="text-gray-500">Shipping</span>
-  {shippingPrice > 0 ? (
+
+              <div className="pt-3 border-t border-dashed border-amber-200 flex justify-between items-center">
+                <span className="font-bold text-gray-800">Total</span>
+                <span className="font-black text-xl text-gray-900">{allOrders?.[0].totalOrderPrice} EGP</span>
+            {Number(allOrders?.[0]?.shippingPrice) > 0 ? (
   <span className="text-emerald-500 font-bold uppercase text-[10px] bg-emerald-50 px-2 py-0.5 rounded">
-    {shippingPrice}
+    {allOrders?.[0]?.shippingPrice}
   </span>
 ) : (
   <span className="text-emerald-500 font-bold uppercase text-[10px] bg-emerald-50 px-2 py-0.5 rounded">
     Free
   </span>
-)}
-              <div className="pt-3 border-t border-dashed border-amber-200 flex justify-between items-center">
-                <span className="font-bold text-gray-800">Total</span>
-                <span className="font-black text-xl text-gray-900">{allOrders?.[0].totalOrderPrice} EGP</span>
-              </div>
+)}  </div>
             </div>
           </div>
 

@@ -15,6 +15,7 @@ import { FaCheck, FaStar, FaTruck } from "react-icons/fa6"
 import { MdInventory } from "react-icons/md"
 import ReviewSummary from "../RatingPath/RatingPath"
 import { FaShippingFast, FaUndo, FaShieldAlt } from 'react-icons/fa';
+
 import { HiCheck } from 'react-icons/hi'; // أيقونة الصح الخضراء
 
 export function TabsDemo() {

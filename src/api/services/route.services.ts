@@ -11,7 +11,7 @@ export   async function getAllProducts() : Promise<ProductType[] | undefined>{
 
    const finalRes=await resp.json()
 
-  //  console.log('finalRes',finalRes)
+ 
   return finalRes.data
     
    } catch (error) {
@@ -27,7 +27,7 @@ export   async function getAllProducts() : Promise<ProductType[] | undefined>{
 
    const finalRes=await resp.json()
 
-  //  console.log('finalRes',finalRes)
+  
   return finalRes.data
     
    } catch (error) {
@@ -43,7 +43,7 @@ export   async function getAllProducts() : Promise<ProductType[] | undefined>{
 
    const finalRes=await resp.json()
 
-  //  console.log('finalRes',finalRes)
+ 
   return finalRes.data
     
    } catch (error) {
@@ -71,7 +71,7 @@ export   async function getAllProducts() : Promise<ProductType[] | undefined>{
 
    const finalRes=await resp.json()
 
-//    console.log('finalRes of cart',finalRes.data)
+
   return finalRes.data
     
    } catch (error) {
@@ -109,7 +109,7 @@ export   async function getAllProducts() : Promise<ProductType[] | undefined>{
 
     const userToken= await decodeAuthenticatedUserToken()
 
-    console.log('userTokennn',userToken)
+    
 
     if(userToken){
          try {
@@ -123,7 +123,7 @@ export   async function getAllProducts() : Promise<ProductType[] | undefined>{
 
    const finalRes=await resp.json()
 
-   console.log('finalRes of user Address',finalRes.data)
+   
   return finalRes.data
     
    } catch (error) {
@@ -148,7 +148,6 @@ export   async function getAllProducts() : Promise<ProductType[] | undefined>{
 
    const finalRes=await resp.json()
 
-   console.log('finalRes catttttttttttt',finalRes)
   return finalRes.data
     
    } catch (error) {
@@ -167,7 +166,7 @@ export   async function getAllProducts() : Promise<ProductType[] | undefined>{
       if(resp.ok){
         const finalRes=await resp.json()
 
-   console.log('finalRes catttttttttttt',finalRes)
+  
   return finalRes.data
       }
     
@@ -187,7 +186,7 @@ export   async function getAllProducts() : Promise<ProductType[] | undefined>{
 
    const finalRes=await resp.json()
 
-   console.log('finalRes all orders',finalRes)
+   
   return finalRes.data
     
    } catch (error) {
@@ -264,7 +263,7 @@ export async function filterProducts({
 
     const userToken= await decodeAuthenticatedUserToken()
 
-    console.log('userTokennn',userToken)
+   
 
     if(userToken){
          try {
@@ -278,7 +277,7 @@ export async function filterProducts({
 
    const finalRes=await resp.json()
 
-//    console.log('finalRes of cart',finalRes.data)
+
   return finalRes.data
     
    } catch (error) {
