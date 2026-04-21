@@ -102,7 +102,7 @@ console.log('filterrred pt=roduct',allProducts)
 
   <div className='col-span-3 h-screen'>
 
-    {allProducts?.length >0 ?    <div className='grid grid-cols-4 gap-4'>
+    {(allProducts?.length ?? 0) >0 ?    <div className='grid grid-cols-4 gap-4'>
         {allProducts?.map((product: ProductType)=><ProductCard  product={product}/>)}
         </div>:    <div className='flex justify-center items-center'>
           <p className='font-bold text-2xl'> No Products</p>
