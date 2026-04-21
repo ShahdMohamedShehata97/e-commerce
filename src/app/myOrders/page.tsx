@@ -9,6 +9,7 @@ import { getAllOrders } from '@/api/services/route.services'
 export default async  function myOrders() {
 
     const allOrders=await getAllOrders()
+const shippingPrice = Number(allOrders?.[0]?.shippingPrice ?? 0)
 
 
 
@@ -59,11 +60,19 @@ export default async  function myOrders() {
               <h3 className="font-extrabold text-gray-800 text-xl"># {allOrders?.[0].totalOrderPrice}</h3>
               <div className="flex items-center gap-4 text-xs text-gray-400 font-medium">
                 <span className="flex items-center gap-1"><HiOutlineCalendar size={14} /> <p>
-  {new Date(allOrders?.[0].createdAt).toLocaleDateString("en-US", {
+  {/* {new Date(allOrders?.[0].createdAt).toLocaleDateString("en-US", {
     month: "short",
     day: "numeric",
     year: "numeric",
-  })}
+  })} */}
+
+  {allOrders?.[0]?.createdAt &&
+  new Date(allOrders[0].createdAt).toLocaleDateString("en-US", {
+    month: "short",
+    day: "numeric",
+    year: "numeric",
+  })
+}
 </p></span>
                 <span className="flex items-center gap-1"><HiOutlineShoppingBag size={14} /> {allOrders?.[0].cartItems.length} item</span>
                 <span className="flex items-center gap-1"><HiOutlineLocationMarker size={14} />{allOrders?.[0].shippingAddress.city}</span>
@@ -144,8 +153,15 @@ export default async  function myOrders() {
               </div>
               <div className="flex justify-between text-sm">
                 <span className="text-gray-500">Shipping</span>
-               {allOrders?.[0].shippingPrice > 0 ?  <span className="text-emerald-500 font-bold uppercase text-[10px] bg-emerald-50 px-2 py-0.5 rounded">{allOrders?.[0].shippingPrice}</span> :  <span className="text-emerald-500 font-bold uppercase text-[10px] bg-emerald-50 px-2 py-0.5 rounded">Free</span>}
-              </div>
+  {shippingPrice > 0 ? (
+  <span className="text-emerald-500 font-bold uppercase text-[10px] bg-emerald-50 px-2 py-0.5 rounded">
+    {shippingPrice}
+  </span>
+) : (
+  <span className="text-emerald-500 font-bold uppercase text-[10px] bg-emerald-50 px-2 py-0.5 rounded">
+    Free
+  </span>
+)}
               <div className="pt-3 border-t border-dashed border-amber-200 flex justify-between items-center">
                 <span className="font-bold text-gray-800">Total</span>
                 <span className="font-black text-xl text-gray-900">{allOrders?.[0].totalOrderPrice} EGP</span>
@@ -241,6 +257,8 @@ export default async  function myOrders() {
 
   
         
+    </div>
+
     </div>
   )
 }

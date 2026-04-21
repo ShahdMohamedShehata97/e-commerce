@@ -19,6 +19,7 @@ export default async function ProductDetails({params}:{params:Promise<{id:string
 
   const id=(await params).id
 
+
   // console.log('id',id)
 
   const productDetails=await getProductDetails(id);
@@ -62,7 +63,7 @@ if (productDetails?.category?._id) {
         <div className='mt-4' >
           <h1 className='text-[30px] font-bold'>{productDetails?.title}</h1>
           <div className='flex gap-2 items-center'>
-            <StarRating rating={productDetails?.ratingsAverage}/>
+            <StarRating rating={productDetails?.ratingsAverage ?? 0}/>
             <span className='text-[14px] font-medium text-[#4A5565] '>{productDetails?.ratingsAverage} ({productDetails?.ratingsQuantity} reviews)</span>
           </div>
           <div className='mt-4'>
@@ -99,7 +100,7 @@ if (productDetails?.category?._id) {
           <div className='flex w-full gap-2 mt-4'>
             {/* <button className='bg-[#16A34A] text-[16px] font-medium text-white w-1/2 py-2 rounded-[12px] flex items-center justify-center gap-2 '> <FaShoppingCart />Add to Cart</button> */}
 
-            <AddToCartButton name={'Add to Cart'} icon={<FaShoppingCart />} id={productDetails.id} className='bg-[#16A34A] text-[16px] font-medium text-white w-1/2 py-2 rounded-[12px] flex items-center justify-center gap-2'/>
+            <AddToCartButton name={'Add to Cart'} icon={<FaShoppingCart />} id={productDetails?.id ?? ""} className='bg-[#16A34A] text-[16px] font-medium text-white w-1/2 py-2 rounded-[12px] flex items-center justify-center gap-2'/>
             <button className='bg-black text-[16px] font-medium text-white w-1/2 py-2 rounded-[12px] flex items-center justify-center gap-2 '> <BsFillLightningChargeFill />Buy Now</button>
           
             
@@ -110,7 +111,7 @@ if (productDetails?.category?._id) {
 
           {/* <button className='bg-transparent border text-[16px] font-medium text-[#364153] w-[90%] py-2 rounded-[12px] flex items-center justify-center gap-2  '> <CiHeart size={30} /> Add to Wishlist</button> */}
 
-<AddwishList id={productDetails.id} name='Add to Wishlist'  className='bg-transparent border text-[16px] font-medium text-[#364153] w-[90%] py-2 rounded-[12px] flex items-center justify-center gap-2 ' icon={<CiHeart size={30} />}/>
+<AddwishList id={productDetails?.id ?? ""} name='Add to Wishlist'  className='bg-transparent border text-[16px] font-medium text-[#364153] w-[90%] py-2 rounded-[12px] flex items-center justify-center gap-2 ' icon={<CiHeart size={30} />}/>
 
           <button className='bg-transparent border  text-[16px] font-medium text-[#364153] w-[10%]  py-2 rounded-[12px] flex items-center justify-center gap-2 '> <CiShare2 size={20} /></button>
           
