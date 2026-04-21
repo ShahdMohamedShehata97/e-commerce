@@ -65,7 +65,7 @@ export default async function CompleteOrder ()  {
             </div>
             
 
-            <AddressSelector addresses={userAddress}/>
+            <AddressSelector addresses={userAddress ?? []}/>
 
             {/* {userAddress?.map((address)=>
                <div className="relative border border-gray-200 rounded-xl p-4 flex items-start gap-4 bg-white hover:border-gray-300 transition-all cursor-pointer">
