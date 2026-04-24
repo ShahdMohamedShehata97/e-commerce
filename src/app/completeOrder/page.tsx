@@ -8,7 +8,6 @@ import PaymentWay from '../_components/PayMentWay/PaymentWay';
 import { FaShieldAlt, FaShoppingBag } from 'react-icons/fa';
 import { FiRefreshCcw } from 'react-icons/fi';
 import Link from 'next/link';
-import AddressSelector from './UserAddress';
 
 export default async function CompleteOrder ()  {
 
@@ -65,9 +64,7 @@ export default async function CompleteOrder ()  {
             </div>
             
 
-            <AddressSelector addresses={userAddress ?? []}/>
-
-            {/* {userAddress?.map((address)=>
+            {userAddress?.map((address)=>
                <div className="relative border border-gray-200 rounded-xl p-4 flex items-start gap-4 bg-white hover:border-gray-300 transition-all cursor-pointer">
               <div className="w-10 h-10 bg-[#F3F4F6] shrink-0 flex items-center justify-center rounded-[8px]">
                 <MdLocationOn color='#6A7282' size={24} />
@@ -87,7 +84,7 @@ export default async function CompleteOrder ()  {
                 </div>
               </div>
             </div>
-            )} */}
+            )}
            
            
 
@@ -141,9 +138,7 @@ export default async function CompleteOrder ()  {
 
       
       <div className="mt-6">
-        {/* <PaymentWay /> */}
-
-        <PaymentWay/>
+        <PaymentWay />
       </div>
     </div>
 
@@ -221,7 +216,7 @@ export default async function CompleteOrder ()  {
   );
 };
 
-// function getLogetInUserAddres() {
-//   throw new Error('Function not implemented.');
-// }
+function getLogetInUserAddres() {
+  throw new Error('Function not implemented.');
+}
 

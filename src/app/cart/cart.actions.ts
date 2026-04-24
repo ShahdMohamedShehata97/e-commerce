@@ -56,55 +56,93 @@ import { decodeAuthenticatedUserToken } from "../utils"
 
 
 
-export async function addProductToCart(id:string){
+// export async function addProductToCart(id:string){
 
-    const bodyObj={productId:id}
+//     const bodyObj={productId:id}
 
-    const userToken= await decodeAuthenticatedUserToken()
+//     const userToken= await decodeAuthenticatedUserToken()
 
-   if(userToken){
-     try{
-
-
-    const res=  await fetch(`https://ecommerce.routemisr.com/api/v2/cart`,{
-            method:'post',
-            headers:{token:userToken,'content-type':'application/json'},
-            body:JSON.stringify(bodyObj)
-
-        })
+//    if(userToken){
+//      try{
 
 
-      if(res.ok){
-          const finalRes=await res.json()
+//     const res=  await fetch(`https://ecommerce.routemisr.com/api/v2/cart`,{
+//             method:'post',
+//             headers:{token:userToken,'content-type':'application/json'},
+//             body:JSON.stringify(bodyObj)
 
-        console.log('addd to cart',finalRes)
-
-        return finalRes.numOfCartItems
-      }
-
-      else{
-        return false
-      }
+//         })
 
 
-    }
+//       if(res.ok){
+//           const finalRes=await res.json()
 
-    catch(error){
+//         console.log('addd to cart',finalRes)
 
-        console.log('error',error)
+//         return finalRes.numOfCartItems
+//       }
 
-    }
-   }
+//       else{
+//         return false
+//       }
 
-   else{
-    return new Error('Session endded')
-   }
+
+//     }
+
+//     catch(error){
+
+//         console.log('error',error)
+
+//     }
+//    }
+
+//    else{
+//     return new Error('Session endded')
+//    }
    
 
 
     
-}
+// }
 
+
+export async function addProductToCart(id: string) {
+  const bodyObj = { productId: id }
+
+  const userToken = await decodeAuthenticatedUserToken()
+
+  if (!userToken) {
+    return { error: true, message: 'Session ended' }
+  }
+
+  try {
+    const res = await fetch(`https://ecommerce.routemisr.com/api/v2/cart`, {
+      method: 'POST',
+      headers: {
+        token: userToken,
+        'content-type': 'application/json'
+      },
+      body: JSON.stringify(bodyObj)
+    })
+
+    const data = await res.json()
+
+    if (res.ok) {
+      return data.numOfCartItems
+      
+    } else {
+      return  data.message || 'Failed'
+    }
+
+  } catch (error) {
+    console.log('error', error)
+
+    return {
+      error: true,
+      message: 'Something went wrong'
+    }
+  }
+}
 
 
 export async function deleteElementFromCart(producId:string){

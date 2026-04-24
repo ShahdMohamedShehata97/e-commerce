@@ -12,7 +12,7 @@
 //   return (
 //     <>
 //       {/* payment */}
-//       {/* <PaymentWa */}
+//       <PaymentWay
 //         selected={paymentMethod}
 //         onChange={setPaymentMethod}
 //       />
