@@ -32,7 +32,8 @@ export async function decodeAuthenticatedUserToken():Promise<string | null>{
 
     const cookie=await cookies()
 
-   const nextAuthToken= cookie.get('next-auth.session-token')?.value || cookie.get('_Secure-next-auth.session-token')?.value;
+//    const nextAuthToken= cookie.get('next-auth.session-token')?.value || cookie.get('_Secure-next-auth.session-token')?.value;
+const nextAuthToken= cookie.get('next-auth.session-token')?.value || cookie.get('__Secure-next-auth.session-token')?.value;
 
    const jwtRes=await decode({secret:process.env.NEXTAUTH_SECRET !,token:nextAuthToken})
 
