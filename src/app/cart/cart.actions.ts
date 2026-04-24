@@ -136,11 +136,8 @@ export async function addProductToCart(id: string) {
 
   } catch (error) {
     console.log('error', error)
-
-    return {
-      error: true,
-      message: 'Something went wrong'
-    }
+    
+    
   }
 }
 
