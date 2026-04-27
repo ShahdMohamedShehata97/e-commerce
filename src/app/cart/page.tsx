@@ -186,7 +186,7 @@ export default async function cart() {
             <div className='mt-5 '>
               <Button className='text-[16px] text-[#4A5565] font-medium  cursor-pointer py-2! bg-transparent w-full border border-gray-500 border-dashed'>
                 <FaTag />Apply Promo Code</Button>
-              <Link href={'/completeOrder'} className='text-[16px] flex items-center gap-2 justify-center text-white font-medium  cursor-pointer mt-5  bg-linear-to-r from-[#16A34A] to-[#15803D] py-2 rounded-[12px] w-full '>
+              <Link href={`/completeOrder/${userCart._id}`} className='text-[16px] flex items-center gap-2 justify-center text-white font-medium  cursor-pointer mt-5  bg-linear-to-r from-[#16A34A] to-[#15803D] py-2 rounded-[12px] w-full '>
                 <FaLock />Secure Checkout</Link>
             </div>
 

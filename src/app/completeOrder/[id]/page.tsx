@@ -4,12 +4,23 @@ import { IoMdHome } from "react-icons/io";
 import { MdLocationOn, MdOutlineLock } from 'react-icons/md';
 import { FaCartShopping, FaCity, FaTruck } from 'react-icons/fa6';
 import {  getLogedInUserAddres, getUserCart } from '@/api/services/route.services';
-import PaymentWay from '../_components/PayMentWay/PaymentWay';
+
 import { FaShieldAlt, FaShoppingBag } from 'react-icons/fa';
 import { FiRefreshCcw } from 'react-icons/fi';
 import Link from 'next/link';
+import AddressContextProvider from '../addressContext';
+import AddressSelector from '../UserAddress';
+import OrderSummaryButton from '../OrderSummeryButton';
+import PaymentWay from '@/app/_components/PayMentWay/PaymentWay';
 
-export default async function CompleteOrder ()  {
+
+export default async function CompleteOrder ({params}:{params:Promise<{id:string}>})  {
+
+
+  const orderId=(await params).id
+
+console.log('summeryId',orderId)
+
 
 
 
@@ -24,7 +35,8 @@ export default async function CompleteOrder ()  {
     // console.log('user Address',userAddress)
 
   return (
-  <div className='w-full px-4 xl:w-[80%] lg:w-[90%] mx-auto py-10'>
+ <AddressContextProvider>
+   <div className='w-full px-4 xl:w-[80%] lg:w-[90%] mx-auto py-10'>
 
     <div className='flex gap-2 '>
       <Link href='/' className='text-[14px] font-medium text-[#6A7282] '>Home</Link>
@@ -64,7 +76,7 @@ export default async function CompleteOrder ()  {
             </div>
             
 
-            {userAddress?.map((address)=>
+            {/* {userAddress?.map((address)=>
                <div className="relative border border-gray-200 rounded-xl p-4 flex items-start gap-4 bg-white hover:border-gray-300 transition-all cursor-pointer">
               <div className="w-10 h-10 bg-[#F3F4F6] shrink-0 flex items-center justify-center rounded-[8px]">
                 <MdLocationOn color='#6A7282' size={24} />
@@ -85,7 +97,9 @@ export default async function CompleteOrder ()  {
               </div>
             </div>
             )}
-           
+            */}
+
+            <AddressSelector addresses={userAddress ?? []}/>
            
 
            
@@ -188,10 +202,12 @@ export default async function CompleteOrder ()  {
             </div>
           </div>
 
-          <button className="w-full mt-6 bg-[#1f9d4f] text-white py-4 rounded-xl font-bold text-md flex items-center justify-center gap-2 shadow-lg shadow-green-100 hover:bg-[#188040] transition-all active:scale-95">
+          {/* <button className="w-full mt-6 bg-[#1f9d4f] text-white py-4 rounded-xl font-bold text-md flex items-center justify-center gap-2 shadow-lg shadow-green-100 hover:bg-[#188040] transition-all active:scale-95">
             <MdOutlineLock size={18} />
             Place Order
-          </button>
+          </button> */}
+
+          <OrderSummaryButton cartId={orderId}/>
           
           {/* Trust Badges */}
           <div className="flex items-center justify-between mt-6 px-1">
@@ -213,6 +229,7 @@ export default async function CompleteOrder ()  {
     </div>
   </div>
 </div>
+ </AddressContextProvider>
   );
 };
 

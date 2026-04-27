@@ -57,6 +57,7 @@ export interface OrderType{
   isDelivered:boolean,
    cartItems:ItemType[],
    createdAt:string
+   id:number
 }
 
 

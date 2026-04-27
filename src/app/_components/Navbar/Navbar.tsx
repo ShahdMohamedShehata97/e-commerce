@@ -156,6 +156,7 @@ const {numberOfWishListItems}= (useWishList() as WishListType)
             bg-transparent 
             border-0 
             shadow-none
+            text-black
             hover:bg-transparent
             focus:bg-transparent
             focus:outline-none
