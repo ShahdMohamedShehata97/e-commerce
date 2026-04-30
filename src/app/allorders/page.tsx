@@ -140,12 +140,29 @@ import { HiOutlineCalendar, HiOutlineLocationMarker, HiOutlineShoppingBag } from
 import { BsCheckCircleFill } from 'react-icons/bs'
 import { getUserOrders } from '@/api/services/route.services'
 import OrderDetailsWrapper from './OrderDetailsButton'
+import { getSession } from 'next-auth/react'
+import { getServerSession } from 'next-auth'
+import { nextAuthConfig } from '@/Next-Auth/NextAuth.config'
 
-export default async function MyOrders({params}:{params:Promise<{id:string}>}) {
-  const userId = (await params).id
-  const allOrders = await getUserOrders(userId)
+// export default async function MyOrders({params}:{params:Promise<{id:string}>}) {
+export default async function MyOrders() {
+  // const userId = (await params).id
+  // const session =await  getSession()
 
-  console.log('ordernumber', allOrders?.length)
+
+  const session = await getServerSession(nextAuthConfig)
+
+  const userId = session?.user?.id
+ 
+  
+  if(!userId){
+     return 
+      // console.log('ordernumber', allOrders?.length)
+  }
+
+ const  allOrders = await getUserOrders(userId)
+
+
 
   return (
     <div className='w-full px-4 xl:w-[75%] lg:w-[90%] mx-auto py-10 font-sans text-slate-700'>

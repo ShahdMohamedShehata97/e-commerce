@@ -8,6 +8,9 @@ import { FaBagShopping, FaCartShopping, FaLock, FaTag, FaTrash, FaTruck } from '
 import { IoIosCheckmark } from 'react-icons/io'
 import RemoveProductFromCart from './RemoveProductFromCart'
 import UpdateProductCountButton from './UpdateProductCountButton'
+import { LuPackageOpen } from 'react-icons/lu';
+import { HiOutlineArrowRight } from 'react-icons/hi'
+
 
 export default async function cart() {
 
@@ -16,6 +19,8 @@ export default async function cart() {
    if(!userCart){
     return 
    }
+
+const categories = ['Electronics', 'Fashion', 'Home', 'Beauty'];
    
    const{totalCartPrice,products} = (userCart as CartResponse)
    
@@ -24,7 +29,51 @@ export default async function cart() {
   return (
     
     <>
-   <div className='bg-[#F9FAFB] min-h-screen pt-8'>
+   {userCart.products.length === 0 ?
+    <div className="flex flex-col items-center justify-center min-h-[60vh] px-4 text-center font-sans">
+      
+     
+     <div className='w-50 h-50 rounded-full bg-gray-400'>
+       <LuPackageOpen size={60}  />
+
+     </div>
+
+     
+      <h2 className="text-2xl font-bold text-slate-900 mb-2">
+        Your cart is empty
+      </h2>
+      <p className="text-slate-500 text-sm md:text-base max-w-xs md:max-w-md leading-relaxed mb-8">
+        Looks like you haven't added anything to your cart yet. Start exploring our products!
+      </p>
+
+      
+      <Link href='/' className="flex items-center gap-2 bg-[#16A34A] hover:bg-[#15803D] text-white px-8 py-3 rounded-xl font-bold transition-all shadow-lg shadow-emerald-100 mb-12">
+        Start Shopping
+        <HiOutlineArrowRight size={20} />
+      </Link>
+
+     
+      <div className="w-full max-w-md">
+        <div className="flex items-center justify-center gap-4 mb-6">
+          <div className="h-px bg-slate-100 flex-1"></div>
+          <span className="text-xs font-semibold text-slate-400 uppercase tracking-widest">
+            Popular Categories
+          </span>
+          <div className="h-px bg-slate-100 flex-1"></div>
+        </div>
+
+        <div className="flex flex-wrap justify-center gap-3">
+          {categories.map((cat) => (
+            <Link href='/category'
+              key={cat}
+              className="px-5 mb-3 py-2 bg-slate-50 hover:bg-slate-100 text-slate-600 text-sm font-medium rounded-full border border-slate-100 transition-colors"
+            >
+              {cat}
+            </Link>
+          ))}
+        </div>
+      </div>
+    </div>: <div className='bg-[#F9FAFB] min-h-screen pt-8'>
     
      <div className='w-full px-4 lg:w-[73%] lg:px-0 mx-auto '>
 
@@ -222,7 +271,7 @@ export default async function cart() {
 
 
       </div>
-    </div>
+    </div>}
     </>
   )
 }

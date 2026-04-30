@@ -11,7 +11,8 @@ import Link from 'next/link';
 import AddressContextProvider from '../addressContext';
 import AddressSelector from '../UserAddress';
 import OrderSummaryButton from '../OrderSummeryButton';
-import PaymentWay from '@/app/_components/PayMentWay/PaymentWay';
+// import PaymentWay from '@/app/_components/PayMentWay/PaymentWay';
+// import { PaymentProvider } from '../paymentContext';
 
 
 export default async function CompleteOrder ({params}:{params:Promise<{id:string}>})  {
@@ -152,7 +153,7 @@ console.log('summeryId',orderId)
 
       
       <div className="mt-6">
-        <PaymentWay />
+        {/* <PaymentWay/> */}
       </div>
     </div>
 

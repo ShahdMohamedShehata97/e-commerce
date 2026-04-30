@@ -94,6 +94,7 @@ export default function NavigationMenuDemo() {
 const session =useSession()
 // const userName= session.data?.user?.name
 const isUserAuthenticated= session.status === 'authenticated'
+const userId= session.data?.user?.id
 
 const {numberOfCartItems}=(useCart() as CartContextType)
 
@@ -242,7 +243,7 @@ const {numberOfWishListItems}= (useWishList() as WishListType)
             
         <NavigationMenuItem className="hidden lg:block">
           <NavigationMenuLink asChild  >
-           {isUserAuthenticated ?  <Link href="/login">
+           {isUserAuthenticated ?  <Link href={`/profile/MyAddress`}>
             <FaIdCard  color="#6A7282" size={30}/></Link> :
             
             <Link href="/login">
