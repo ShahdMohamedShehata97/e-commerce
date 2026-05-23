@@ -158,3 +158,31 @@ export async function completeVisaOrder(id: string, address: AddressType) {
     return null
   }
 }
+
+
+export async function clearUserCart(){
+
+   const userToken = await decodeAuthenticatedUserToken()
+
+   if(userToken){
+    try{
+
+      const res = await fetch('https://ecommerce.routemisr.com/api/v2/cart',{
+        headers:{token:userToken}
+      })
+
+      if(res){
+        const finalRes = await res.json()
+
+        console.log('clearCrat',finalRes)
+        return finalRes
+      }
+
+    }
+    catch(error){
+      console.log(error)
+    }
+   }
+
+
+}

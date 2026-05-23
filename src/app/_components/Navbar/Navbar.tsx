@@ -22,17 +22,18 @@ import {
   NavigationMenuTrigger,
   navigationMenuTriggerStyle,
 } from "@/components/ui/navigation-menu"
-import { FaCartShopping, FaIdCard, FaRegUser } from "react-icons/fa6";
-import { FaRegHeart } from "react-icons/fa";
+import { FaBoxOpen, FaCartShopping, FaIdCard, FaRegAddressBook, FaRegUser } from "react-icons/fa6";
+import { FaRegHeart, FaRegUserCircle } from "react-icons/fa";
 import freshCart from '@/assets/images/freshcart-logo.svg'
 import Image from "next/image";
 import { BsHeadset } from "react-icons/bs"; 
-import { IoIosSearch } from "react-icons/io";
+import { IoIosHeartEmpty, IoIosSearch, IoMdSettings } from "react-icons/io";
 import Sidebar from "../Sidebar/Sidebar"
 import { useSession } from "next-auth/react"
 // import { CartContextType,  useCart, userCart } from "@/app/_context/CartContext"
 import {  CartContextType, useCart } from "@/app/_context/CartContext"
 import { useWishList, WishListType } from "@/app/_context/WishListContext"
+import { RiUserLine } from "react-icons/ri";
 
 
 
@@ -92,7 +93,7 @@ export default function NavigationMenuDemo() {
 
 
 const session =useSession()
-// const userName= session.data?.user?.name
+const userName= session.data?.user?.name
 const isUserAuthenticated= session.status === 'authenticated'
 const userId= session.data?.user?.id
 
@@ -123,6 +124,7 @@ const {numberOfWishListItems}= (useWishList() as WishListType)
 
 </div>
       </div>
+    
 
       <NavigationMenuList>
        
@@ -243,8 +245,75 @@ const {numberOfWishListItems}= (useWishList() as WishListType)
             
         <NavigationMenuItem className="hidden lg:block">
           <NavigationMenuLink asChild  >
-           {isUserAuthenticated ?  <Link href={`/profile/MyAddress`}>
-            <FaIdCard  color="#6A7282" size={30}/></Link> :
+           {isUserAuthenticated ? 
+            // <Link href={`/profile/MyAddress`}  >
+            // <FaIdCard  color="#6A7282" size={30}/></Link>
+
+               <DropdownMenu >
+  <DropdownMenuTrigger asChild>
+    <div>
+      <NavigationMenuItem className="flex">
+        <NavigationMenuTrigger
+          className="
+            bg-transparent 
+            border-0 
+            shadow-none
+            text-black
+            hover:bg-transparent
+            focus:bg-transparent
+            focus:outline-none
+            focus:ring-0
+            hover:text-[#16A34A]
+            font-medium
+          "
+        >
+         <FaIdCard  color="#6A7282" size={30}/>
+        </NavigationMenuTrigger>
+      </NavigationMenuItem>
+    </div>
+  </DropdownMenuTrigger>
+  <DropdownMenuContent className="w-fit px-4">
+    <DropdownMenuGroup>
+      <DropdownMenuLabel>
+        <div className='flex items-center gap-2'>
+          <div className='w-10  h-10 flex justify-center items-center bg-[#DCFCE7]  rounded-full'>
+            <FaRegUserCircle size={20} color='#1EA751' />
+
+          </div>
+          <p  className="text-[16px] text-black font-bold py-4"> {userName} </p> 
+         
+
+        </div>
+      </DropdownMenuLabel>
+
+      
+ 
+      <DropdownMenuItem className="hover:text-[#16A34A]! hover:bg-[#F0FDF4]! text-[16px] font-medium "><Link href='/profile/MyAddress' className="flex items-center gap-2 hover:text-[#16A34A]!"><RiUserLine className="text-inherit" />My Profile 
+      </Link></DropdownMenuItem>
+
+       <DropdownMenuItem className="hover:text-[#16A34A]! hover:bg-[#F0FDF4]! mt-2 text-[16px] font-medium "><Link href='/allorders' className="flex items-center gap-2 hover:text-[#16A34A]!"><FaBoxOpen className="text-inherit" />My Orders
+      </Link></DropdownMenuItem>
+
+
+      <DropdownMenuItem className="hover:text-[#16A34A]! hover:bg-[#F0FDF4]! text-[16px] mt-2 font-medium "><Link href='/wishList' className="flex items-center gap-2 hover:text-[#16A34A]!"><IoIosHeartEmpty className="text-inherit" />My Wishlist
+      </Link></DropdownMenuItem>
+
+        <DropdownMenuItem className="hover:text-[#16A34A]! mt-2 hover:bg-[#F0FDF4]! text-[16px] font-medium "><Link href='/profile/MyAddress' className="flex items-center gap-2 hover:text-[#16A34A]!"><FaRegAddressBook className="text-inherit" />Addresses
+      </Link></DropdownMenuItem>
+
+        <DropdownMenuItem className="hover:text-[#16A34A]! mt-2 hover:bg-[#F0FDF4]! text-[16px] font-medium "><Link href='/profile/Settings' className="flex items-center gap-2 hover:text-[#16A34A]!"><IoMdSettings className="text-inherit" />Settings 
+      </Link></DropdownMenuItem>
+
+
+      {/* <DropdownMenuItem className="hover:text-[#16A34A]! hover:bg-[#F0FDF4]! text-[16px] font-medium">Electronics</DropdownMenuItem>
+      <DropdownMenuItem className="hover:text-[#16A34A]! hover:bg-[#F0FDF4]! text-[16px] font-medium">Women's Fashion</DropdownMenuItem>
+      <DropdownMenuItem className="hover:text-[#16A34A]! hover:bg-[#F0FDF4]! text-[16px] font-medium">Men's Fashion</DropdownMenuItem>
+      <DropdownMenuItem className="hover:text-[#16A34A]! hover:bg-[#F0FDF4]! text-[16px] font-medium">Beauty & Health</DropdownMenuItem> */}
+    </DropdownMenuGroup>
+ 
+  </DropdownMenuContent>
+</DropdownMenu>
+             :
             
             <Link href="/login">
             <FaRegUser />
@@ -264,7 +333,8 @@ const {numberOfWishListItems}= (useWishList() as WishListType)
         </NavigationMenuList>
 
 
-      </NavigationMenuList></div>
+      </NavigationMenuList> 
+      </div>
     </NavigationMenu>
   )
 }

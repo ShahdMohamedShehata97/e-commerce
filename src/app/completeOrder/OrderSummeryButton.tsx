@@ -63,17 +63,19 @@
 
 import { MdOutlineLock } from 'react-icons/md'
 import { AddressContextType, useAddress } from './addressContext'
-import { completeOrder, completeVisaOrder } from './completeorderActions'
+import { clearUserCart, completeOrder, completeVisaOrder } from './completeorderActions'
 import { useRouter } from 'next/navigation'
 import { useSession } from 'next-auth/react'
 
 import { toast } from 'sonner'
 import { useState } from 'react'
+import { CartContextType, useCart } from '../_context/CartContext'
 
 export default function OrderSummaryButton({cartId}:{cartId:string}){
 
 
   const {address} = (useAddress() as AddressContextType)
+  const {updateNumberOfCartItems} = (useCart() as CartContextType)
 
 
   console.log('summerrrr addres',address)
@@ -121,9 +123,17 @@ async function handleOrder() {
 
     const res = await completeOrder(cartId, address)
 
+     
+
     if (res) {
+
       toast.success('Order placed successfully')
       router.replace('/allorders')
+      
+    const x= await clearUserCart()
+    if(x){
+      updateNumberOfCartItems(0)
+    }
     }
 
 
@@ -138,6 +148,12 @@ async function handleOrder() {
 
        window.open(res.session.url)
         toast.success('order completed Successfully',{position:'top-right',duration:3000})
+        
+        const x= await clearUserCart()
+    if(x){
+      updateNumberOfCartItems(0)
+    }
+    
     }
 
     return

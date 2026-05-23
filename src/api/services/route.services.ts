@@ -321,7 +321,7 @@ export async function filterProducts({
 export async function getUserOrders(id: string): Promise<OrderType[] | undefined> {
   try {
     const resp = await fetch(`https://ecommerce.routemisr.com/api/v1/orders/user/${id}`, {
-      cache: 'force-cache'
+     
     })
 
     const finalRes = await resp.json()

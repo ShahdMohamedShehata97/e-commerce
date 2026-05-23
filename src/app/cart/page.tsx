@@ -33,7 +33,7 @@ const categories = ['Electronics', 'Fashion', 'Home', 'Beauty'];
     <div className="flex flex-col items-center justify-center min-h-[60vh] px-4 text-center font-sans">
       
      
-     <div className='w-50 h-50 rounded-full bg-gray-400'>
+     <div className='w-50 h-50 rounded-full flex items-center justify-center bg-[#F3F4F6] mb-4'>
        <LuPackageOpen size={60}  />
 
      </div>
