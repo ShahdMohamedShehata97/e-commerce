@@ -171,7 +171,7 @@ export default async function Home() {
 
           <div className="p-14 bg-linear-to-br from-[#F3F4F6] via-white to-[#FEF2F2] rounded-[40px] mt-8  md:flex gap-12 items-center">
 
-  {/* LEFT */}
+ 
   <div className="">
 
     {/* Header */}
@@ -247,7 +247,7 @@ export default async function Home() {
 
   </div>
 
-  {/* RIGHT CARD */}
+ 
   <div className="relative w-90 h-100 rounded-3xl mt-4 md:mt-0 overflow-hidden
     bg-linear-to-br from-[#101828]  to-[#1E2939]
      shrink-0">

@@ -22,7 +22,7 @@ export default function ProductCard({ product }: ProductCardProps) {
   // console.log('dis',discountPersantage)
 
   return (
-    <div className="border px-4 rounded-lg shadow-sm relative pb-3 hover:shadow-2xl hover:-translate-y-1 transition-all">
+    <div className="border px-4 rounded-lg shadow-sm relative pb-3 hover:shadow-2xl hover:-translate-y-1 transition-all duration-300 ease-in-out">
       <img
         src={product.imageCover}
         alt={product.title}

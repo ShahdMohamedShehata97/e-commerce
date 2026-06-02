@@ -160,9 +160,9 @@
 } */
 
 .swiper-button-prev, .swiper-button-next{
-  color:'#0DAB48' !important;
-  width: 30px;
-  hight:30px;
+  color:#0DAB48 !important;
+  width: 50px;
+
   background-color: white;
   padding:8px;
   border-radius: 100%;
@@ -173,3 +173,4 @@
         max-width: 35%;
     }
 }
+

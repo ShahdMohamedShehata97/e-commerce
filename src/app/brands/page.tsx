@@ -1,6 +1,7 @@
 
 
 import { getAllBrands } from '@/api/services/route.services';
+import Link from 'next/link';
 import React from 'react';
 import { FaTags } from 'react-icons/fa6';
 
@@ -11,7 +12,7 @@ export default async function BrandHeader  ()  {
 
   return (
    <div className='bg-[#F9FAFB80]'>
-     <div className="w-full bg-linear-to-r from-[#7F22FE] via-[#8E51FF] to-[#C27AFF] py-12 px-6 md:px-16 min-h-[200px] flex flex-col justify-center">
+     <div className="w-full bg-linear-to-r from-[#7F22FE] via-[#8E51FF] to-[#C27AFF] py-12 px-6 md:px-16 min-h-50 flex flex-col justify-center">
       <div className="max-w-7xl mx-auto w-full">
         
         {/* Breadcrumbs */}
@@ -47,7 +48,7 @@ export default async function BrandHeader  ()  {
      <div className='w-full px-4 lg:w-[73%] lg:px-0 mx-auto '>
 
          <div className="grid grid-cols-1 md:grid-cols-4 lg:grid-cols-6 gap-6 mt-8  ">
-          {brands?.map((brand)=><div key={brand._id} className='shadow px-5 pt-5 pb-7 border border=[#F9FAFB] rounded-[12px]'>
+          {brands?.map((brand)=><Link href={`/shop/brand/${brand._id}`} key={brand._id} className='shadow px-5 pt-5 pb-7 border border-[#F9FAFB] rounded-[12px] hover:border-[#7f22fe] hover:text-[#7f22fe] hover:-translate-y-1 transition-all duration-300 ease-in-out '>
 
             <div className='bg-[#F9FAFB] px-4 py-6 rounded-[12px] '>
               <img src={brand.image} alt={brand.name}/>
@@ -57,7 +58,7 @@ export default async function BrandHeader  ()  {
             <h3 className='text-[14px] font-semibold text-center mt-2'>{brand.name} </h3>
 
 
-          </div>)}
+          </Link>)}
                   
                   </div>
        </div>

@@ -20,4 +20,4 @@ export async function proxy(req:NextRequest){
 }
 
 
-export const config= { matcher:['/cart','/profile','/wishList']}
+export const config= { matcher:['/cart','/profile','/wishList','/allorders','/completeOrder']}

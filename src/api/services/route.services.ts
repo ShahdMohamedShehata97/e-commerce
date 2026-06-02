@@ -295,6 +295,43 @@ export async function filterProducts({
  
 
 
+export async function getSpecificCategory (id:string) : Promise<CategoryType | undefined>{
+
+    try {
+       const resp= await  fetch(`https://ecommerce.routemisr.com/api/v1/categories/${id}`)
+
+   const finalRes=await resp.json()
+
+   console.log('finalResspacific category',finalRes)
+  return finalRes.data
+    
+   } catch (error) {
+    console.log('error',error)
+    
+   }
+
+
+}
+
+
+export async function getSpecificBrand (id:string) : Promise<BrandType | undefined>{
+
+    try {
+       const resp= await  fetch(`https://ecommerce.routemisr.com/api/v1/brands/${id}`)
+
+   const finalRes=await resp.json()
+
+   console.log('finalResspacific category',finalRes)
+  return finalRes.data
+    
+   } catch (error) {
+    console.log('error',error)
+    
+   }
+
+
+}
+
  
 
 

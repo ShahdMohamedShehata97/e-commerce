@@ -1,6 +1,7 @@
 
 
 import { getAllBrands, getAllCategories } from '@/api/services/route.services';
+import Link from 'next/link';
 import React from 'react';
 import { FaTags } from 'react-icons/fa6';
 import { IoLayers } from 'react-icons/io5';
@@ -22,14 +23,14 @@ export default async function AllCartegories  ()  {
           <span className="font-medium text-white">Brands</span>
         </nav>
 
-        {/* Content Section */}
+       
         <div className="flex items-center gap-5">
-          {/* Icon Box */}
+       
           <div className="bg-white/20 p-4 rounded-2xl shadow-lg backdrop-blur-sm border border-white/10">
             <IoLayers className="text-white text-4xl" />
           </div>
 
-          {/* Text */}
+         
           <div className="text-white">
             <h1 className="text-3xl md:text-4xl font-bold tracking-tight">
               All Categories
@@ -47,18 +48,21 @@ export default async function AllCartegories  ()  {
 
      <div className='w-full px-4 lg:w-[73%] lg:px-0 mx-auto '>
 
-         <div className="grid grid-cols-1 md:grid-cols-4 lg:grid-cols-5 gap-6 mt-8  ">
-         {categories?.map((brand)=><div key={brand._id} className='shadow px-5 pt-5 pb-7 border border=[#F9FAFB] rounded-[12px]'>
-
+         <div className="grid grid-cols-1   md:grid-cols-4 lg:grid-cols-5 gap-6 mt-8  ">
+         {categories?.map((category)=><Link
+  href={`/shop/category/${category._id}`}
+  key={category._id}
+  className="shadow px-5 pt-5 pb-7 border border-[#F9FAFB] hover:border-[#a3ffc6] hover:text-[#16a34a] hover:-translate-y-1 transition-all duration-300 ease-in-out rounded-[12px]"
+>
             <div className=' '>
-              <img src={brand.image} alt={brand.name}  className='w-57.75!  h-57.75 object-cover'/>
+              <img src={category.image} alt={category.name}  className='w-57.75!  h-57.75 object-cover'/>
             </div>
 
-            {/* <h3 className='text-[14px] font-semibold'>{brand.name}</h3> */}
-            <h3 className='text-[16px] font-bold mt-5 text-center'>{brand.name} </h3>
+            {/* <h3 className='text-[14px] font-semibold'>{category.name}</h3> */}
+            <h3 className='text-[16px] font-bold mt-5 text-center'>{category.name} </h3>
 
 
-          </div>)}
+          </Link>)}
                   
                   </div>
        </div>
