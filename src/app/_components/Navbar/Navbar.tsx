@@ -34,62 +34,11 @@ import { useSession } from "next-auth/react"
 import {  CartContextType, useCart } from "@/app/_context/CartContext"
 import { useWishList, WishListType } from "@/app/_context/WishListContext"
 import { RiUserLine } from "react-icons/ri";
+import SearchInput from "../SearchInput/SearchInput"
+import { BrandType, CategoryType } from "@/api/types"
 
 
-
-// const components: { title: string; href: string; description: string }[] = [
-//   {
-//     title: "Alert Dialog",
-//     href: "/docs/primitives/alert-dialog",
-//     description:
-//       "A modal dialog that interrupts the user with important content and expects a response.",
-//   },
-//   {
-//     title: "Hover Card",
-//     href: "/docs/primitives/hover-card",
-//     description:
-//       "For sighted users to preview content available behind a link.",
-//   },
-//   {
-//     title: "Progress",
-//     href: "/docs/primitives/progress",
-//     description:
-//       "Displays an indicator showing the completion progress of a task, typically displayed as a progress bar.",
-//   },
-//   {
-//     title: "Scroll-area",
-//     href: "/docs/primitives/scroll-area",
-//     description: "Visually or semantically separates content.",
-//   },
-//   {
-//     title: "Tabs",
-//     href: "/docs/primitives/tabs",
-//     description:
-//       "A set of layered sections of content—known as tab panels—that are displayed one at a time.",
-//   },
-//   {
-//     title: "Tooltip",
-//     href: "/docs/primitives/tooltip",
-//     description:
-//       "A popup that displays information related to an element when the element receives keyboard focus or the mouse hovers over it.",
-//   },
-// ]
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-export default function NavigationMenuDemo() {
+export default function NavigationMenuDemo({brands,categories}:{categories:CategoryType[],brands:BrandType[]}) {
 
 
 const session =useSession()
@@ -112,11 +61,13 @@ const {numberOfWishListItems}= (useWishList() as WishListType)
         <Image src={freshCart} alt="Fresh Cart"/>
 <div className="relative hidden lg:flex w-full max-w-md">
 
-  <input
+  {/* <input
     type="text"
     placeholder="Search for products, brands and more..."
     className="w-full px-4 pr-10 rounded-full border py-2"
-  />
+  /> */}
+
+  <SearchInput brands={brands} categories={categories}/>
 
   <div className="absolute right-2 top-1/2 -translate-y-1/2 w-8 h-8 bg-green-700 rounded-full flex justify-center items-center cursor-pointer">
     <IoIosSearch className="text-white" />
@@ -183,10 +134,6 @@ const {numberOfWishListItems}= (useWishList() as WishListType)
       <DropdownMenuItem className="hover:text-[#16A34A]! hover:bg-[#F0FDF4]! text-[16px] font-medium"><Link href='/shop/category/6439d5b90049ad0b52b90048'>Men's Fashion</Link></DropdownMenuItem>
       <DropdownMenuItem className="hover:text-[#16A34A]! hover:bg-[#F0FDF4]! text-[16px] font-medium"><Link href='/shop/category/6439d30b67d9aa4ca97064b1'>Beauty & Health</Link></DropdownMenuItem>
 
-     
-      {/* <DropdownMenuItem className="hover:text-[#16A34A]! hover:bg-[#F0FDF4]! text-[16px] font-medium">Women's Fashion</DropdownMenuItem> */}
-      {/* <DropdownMenuItem className="hover:text-[#16A34A]! hover:bg-[#F0FDF4]! text-[16px] font-medium">Men's Fashion</DropdownMenuItem> */}
-      {/* <DropdownMenuItem className="hover:text-[#16A34A]! hover:bg-[#F0FDF4]! text-[16px] font-medium">Beauty & Health</DropdownMenuItem> */}
     </DropdownMenuGroup>
  
   </DropdownMenuContent>

@@ -9,7 +9,7 @@ import { Session } from "inspector/promises";
 import { SessionProvider } from "next-auth/react";
 import SessionProviderComp from "./_components/SessionProviderComp/SessionProviderComp";
 import CartContextProvider from "./_context/CartContext";
-import { getUserCart, getUserWishList } from "@/api/services/route.services";
+import { getAllBrands, getAllCategories, getUserCart, getUserWishList } from "@/api/services/route.services";
 import WishListContextProvider from "./_context/WishListContext";
  
 
@@ -43,6 +43,8 @@ export default async function RootLayout({
 
   const userCart= await getUserCart()
   const userWishList= await getUserWishList()
+  const brands = await getAllBrands()
+  const categories = await getAllCategories()
   
   return (
     <html
@@ -59,7 +61,7 @@ export default async function RootLayout({
           <SessionProviderComp>
 
            <Header/>
-        <Navbar/>
+        <Navbar categories={categories || []} brands={brands || []}/>
         
         {children}
         <Toaster/>
